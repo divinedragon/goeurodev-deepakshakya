@@ -1,0 +1,19 @@
+{
+    "properties": [
+        {
+            "name": "api.url",
+            "type": "java.lang.String",
+            "description": "Url of the Goeuro API"
+        },
+        {
+            "name": "csvfile.path",
+            "type": "java.lang.String",
+            "description": "File in which the city information will be written"
+        },
+        {
+            "name": "csvfile.header",
+            "type": "java.lang.String",
+            "description": "Header row of the CSV File"
+        }
+    ]
+}
