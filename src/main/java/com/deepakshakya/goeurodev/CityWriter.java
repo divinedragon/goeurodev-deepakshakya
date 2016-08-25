@@ -1,11 +1,10 @@
 package com.deepakshakya.goeurodev;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -14,19 +13,12 @@ import com.deepakshakya.goeurodev.json.City;
 @Component
 public class CityWriter {
 
-    @Value("${csvfile.path}")
-    private String filePath;
-
-    @Value("${csvfile.header}")
-    private String header;
+    @Autowired
+    private BufferedWriter writer;
 
     public void write(final List<City> cities) throws IOException {
 
         Assert.notNull(cities);
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-
-        writer.write(header);
 
         for (City city : cities) {
             writer.write(getRow(city));
@@ -48,5 +40,9 @@ public class CityWriter {
              + "\n"
         ;
         // @formatter:on
+    }
+
+    public void setWriter(final BufferedWriter writer) {
+        this.writer = writer;
     }
 }
